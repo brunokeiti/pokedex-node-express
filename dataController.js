@@ -41,7 +41,7 @@ exports.postData = (request, response) => {
         .status(400)
         .send({ message: "Error: Pokemon ID already taken" });
     }
-    data.push({ id, name });
+    data.push({ id: parseInt(id), name });
     saveJsonData(data, "pokedex.json");
     setTimeout(() => {
       return response.send({
