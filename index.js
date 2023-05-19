@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const PORT = 8080;
 
-var dataController = require("./dataController");
+const dataController = require("./dataController");
 
 app.use(express.json());
 
@@ -13,5 +13,9 @@ app.post("/pokemon/:id", dataController.postData);
 app.put("/pokemon/:id", dataController.updateData);
 
 app.delete("/pokemon/:id", dataController.deleteData);
+
+app.use(function (req, res, next) {
+  res.status(404).send({ message: "Error: Nice try Team Rocket" });
+});
 
 app.listen(PORT, () => console.log(`Working on port ${PORT}`));

@@ -44,7 +44,7 @@ exports.postData = (request, response) => {
     data.push({ id: parseInt(id), name });
     saveJsonData(data, "pokedex.json");
     setTimeout(() => {
-      return response.send({
+      return response.status(201).send({
         message: `New pokemon ${name} / ${id} registered!`,
       });
     }, 100);
